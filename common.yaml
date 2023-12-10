@@ -1,0 +1,45 @@
+esphome:
+  name: "${name}"
+
+esp8266:
+  # https://www.wemos.cc/en/latest/d1/d1_mini_lite.html
+  board: esp8285
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  password: ""
+
+wifi:
+  ssid: "BrendLAN"
+  password: !secret brendlan_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bathroom Fallback Hotspot"
+    password: !secret fallback_hotspot_password
+
+captive_portal:
+
+# https://www.berrybase.ch/dht22-temperatur/luftfeuchtesensor-shield-fuer-d1-mini
+sensor:
+  - platform: dht
+    # Was getting flaky results,
+    # http://www.ocfreaks.com/basics-interfacing-dht11-dht22-humidity-temperature-sensor-mcu/
+    # says that the start signal is supposed to be 18ms. Reading the dht
+    # component code revealed that you need to set type2 for that to happen. I
+    # don't really know any more than that, this seems to make it work.
+    model: DHT22_TYPE2
+    pin: GPIO2  # i.e. D4 on the board
+    temperature:
+      name: "${human_name} Temperature"
+    humidity:
+      name: "${human_name} Humidity"
+    update_interval: 60s
+
+web_server:

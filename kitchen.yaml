@@ -1,0 +1,7 @@
+!include {
+  file: common.yaml,
+  vars: {
+    name: "kitchen",
+    human_name: "Kitchen"
+  }
+}
