@@ -1,7 +1,7 @@
 !include {
   file: common.yaml,
   vars: {
-    name: "bathroom",
-    human_name: "Bathroom"
+    name: "bedroom",
+    human_name: "Bedroom"
   }
 }
