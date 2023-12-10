@@ -19,6 +19,8 @@ wifi:
   ssid: "BrendLAN"
   password: !secret brendlan_password
 
+  domain: .fritz.box
+
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Bathroom Fallback Hotspot"
