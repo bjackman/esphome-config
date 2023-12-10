@@ -45,3 +45,4 @@ sensor:
     update_interval: 60s
 
 web_server:
+  port: 80
