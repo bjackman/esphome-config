@@ -40,8 +40,15 @@ sensor:
     pin: GPIO2  # i.e. D4 on the board
     temperature:
       name: "${human_name} Temperature"
+      filters:
+        # Occasionally I see a reading of 0.0 for both humidity and temperature.
+        # Hopefully it's never that cold in the flat, so simple fix is just to drop
+        # that specific value.
+        - filter_out: 0.0
     humidity:
       name: "${human_name} Humidity"
+      filters:
+        - filter_out: 0.0
     update_interval: 60s
 
 web_server:
